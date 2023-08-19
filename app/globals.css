@@ -8,5 +8,6 @@
   box-sizing: border-box;
 }
 body {
-  /* background-color: #7DC2AF; */
+  background-color: #7DC2AF;
+  font-family: fantasy;
 }

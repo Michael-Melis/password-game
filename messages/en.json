@@ -1,5 +1,13 @@
 {
   "MainPage": {
-    "title": "Hiiiii"
+    "title": "Welcome to Password challenge!",
+    "rules": "Rules are simple: Follow the instructions and create the password.",
+    "goodLuck": "Good luck!",
+    "uWillNeedIt": "😈You will need it...😈",
+    "pointerDownEmoji": "👇🏼",
+    "passwordPlaceholder": "Enter your password here"
+  },
+  "Buttons": {
+    "startChallenge": "Start challenge"
   }
 }
