@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
+import DynamicRowTextArea from './DynamicRowTextArea';
 
 const MainInput = () => {
   // * Localization
@@ -7,7 +8,6 @@ const MainInput = () => {
 
   // * States
   const [password, setPassword] = useState<string>('');
-  console.log('🚀 ~ file: MainInput.tsx:10 ~ MainInput ~ password:', password);
 
   /**
    *
@@ -19,15 +19,19 @@ const MainInput = () => {
    *
    */
 
+  
+
   return (
-    <div className='flex bg-[#c38db3] justify-center items-center rounded-md h-40 w-10/12'>
-      <input
-        type='text'
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder={t('passwordPlaceholder')}
-        className='w-10/12 rounded-md p-2 text-[#E27D60]  focus:border-none outline-none  placeholder:text-center placeholder:text-[#C38D9E]'
+    <div className='flex bg-[#c38db3] flex-col justify-center items-center rounded-md p-10 h-auto w-10/12'>
+      <DynamicRowTextArea
+        setValue={setPassword}
+        placeholder='passwordPlaceholder'
+        numberOfLetters={password.length}
       />
 
+      <p className='text-4xl mt-5 text-[#E8A87C] break-words w-full '>
+        {password}
+      </p>
     </div>
   );
 };
