@@ -3,15 +3,24 @@
 import { useTranslations } from 'next-intl';
 import { useScreenWidth } from '../../_hooks/useScreenWidth';
 import { calculateNumberOfRows } from '../../_utils/helpers';
+import { Control, Controller } from 'react-hook-form';
 
 const DynamicRowTextArea = ({
-  setValue,
   placeholder,
   numberOfLetters,
+  formProps,
 }: {
-  setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder: string;
   numberOfLetters: number;
+  formProps: {
+    control: Control<
+      {
+        password: string;
+      },
+      any
+    >;
+    errors: any;
+  };
 }) => {
   // * Localization
   const t = useTranslations('MainPage');
@@ -23,12 +32,21 @@ const DynamicRowTextArea = ({
   const numberOfRows = calculateNumberOfRows(actualWidth, numberOfLetters);
 
   return (
-    <textarea
-      placeholder={t(placeholder)}
-      className='w-full rounded-md p-2 h-auto  text-[#E27D60] text-xl  text-center focus:border-none outline-none  placeholder:text-center placeholder:text-[#C38D9E]'
-      onChange={(e) => setValue(e.target.value)}
-      rows={numberOfRows}
-    />
+    <>
+      <Controller
+        name='password'
+        control={formProps.control}
+        render={({ field }) => (
+          <textarea
+            placeholder={t(placeholder)}
+            {...field}
+            className='w-full rounded-md p-2 h-auto  text-[#E27D60] text-xl  text-center focus:border-none outline-none  placeholder:text-center placeholder:text-[#C38D9E]'
+            rows={numberOfRows}
+          />
+        )}
+      />
+      {formProps.errors.password && <p>{formProps.errors.password.message}</p>}
+    </>
   );
 };
 

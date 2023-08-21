@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import TypoWithTranslation from '../TypoWithTranslation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faCheckDouble, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
 export enum TaskDifficulty {
   low = 'low',
@@ -11,7 +11,7 @@ export enum TaskDifficulty {
 }
 
 export type TaskProps = {
-  id: string;
+  id: number;
   title: string;
   difficulty: TaskDifficulty;
   points: number;
@@ -53,15 +53,8 @@ const Task = ({ data }: { data: TaskProps }) => {
     <div className='flex flex-col max-w-2xl'>
       <div
         className={`border-b-4 border-black p-4 font-mono ${bgColor} rounded-t-xl`}>
-        <TypoWithTranslation
-          data={{
-            text: data.title,
-            localizationContainer: 'MainChallenge',
-            styles: 'text-2xl text-white font-bold',
-          }}
-        />
-        <div className='flex justify-between'>
-          <div className='flex items-center mt-4'>
+        <div className='flex justify-between mb-4'>
+          <div className='flex items-center '>
             <TypoWithTranslation
               data={{
                 text: 'difficulty',
@@ -71,7 +64,7 @@ const Task = ({ data }: { data: TaskProps }) => {
             />
             <p>{difficultyIconSwitch(data.difficulty).difficulty}</p>
           </div>
-          <div className='flex items-center mt-4'>
+          <div className='flex items-center '>
             <TypoWithTranslation
               data={{
                 text: 'points',
@@ -84,37 +77,53 @@ const Task = ({ data }: { data: TaskProps }) => {
             </p>
           </div>
         </div>
+        <TypoWithTranslation
+          data={{
+            text: data.title,
+            localizationContainer: 'MainChallenge',
+            styles: 'text-2xl text-white font-bold',
+          }}
+        />
       </div>
-      <div className={`${bgColor} bg-opacity-80 flex flex-col items-center`}>
-        {data.description && (
-          <TypoWithTranslation
-            data={{
-              text: data.description,
-              localizationContainer: 'MainChallenge',
-              styles: 'text-lg text-white text-center p-4 font-mono',
-            }}
+      {data.solved ? (
+        <div className={`${bgColor} bg-opacity-20 flex flex-col items-center`}>
+          <FontAwesomeIcon
+            icon={faCheckDouble}
+            className='cursor-pointer animate-pulse p-4 text-6xl text-[#0F9D58]'
           />
-        )}
-        {data.additionalContent && data.additionalContent}
-        {data.hint && (
-          <>
-            <FontAwesomeIcon
-              icon={faLightbulb}
-              onClick={() => setToggleHint(!toggleHint)}
-              className='cursor-pointer animate-pulse p-4 text-xl text-[#FFDF00]'
+        </div>
+      ) : (
+        <div className={`${bgColor} bg-opacity-80 flex flex-col items-center`}>
+          {data.description && (
+            <TypoWithTranslation
+              data={{
+                text: data.description,
+                localizationContainer: 'MainChallenge',
+                styles: 'text-lg text-white text-center p-4 font-mono',
+              }}
             />
-            {toggleHint && (
-              <TypoWithTranslation
-                data={{
-                  text: data.hint,
-                  localizationContainer: 'MainChallenge',
-                  styles: 'text-lg text-white text-center p-4 font-mono',
-                }}
+          )}
+          {data.additionalContent && data.additionalContent}
+          {data.hint && (
+            <>
+              <FontAwesomeIcon
+                icon={faLightbulb}
+                onClick={() => setToggleHint(!toggleHint)}
+                className='cursor-pointer animate-pulse p-4 text-xl text-[#FFDF00]'
               />
-            )}
-          </>
-        )}
-      </div>
+              {toggleHint && (
+                <TypoWithTranslation
+                  data={{
+                    text: data.hint,
+                    localizationContainer: 'MainChallenge',
+                    styles: 'text-lg text-white text-center p-4 font-mono',
+                  }}
+                />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

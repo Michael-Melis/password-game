@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import StyledButton from './elements/Button';
 import MainInput from './MainInput';
-import TasksToSolve from './tasks/TasksToSolve';
+
 
 const MainChallenge = ({
   challengeStarted,
@@ -12,12 +12,16 @@ const MainChallenge = ({
   challengeStarted: boolean;
   setChallengeStarted: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const handleFormSubmit = (data: any) => {
+    // Here you can implement the logic to validate the user input against the challenge conditions
+    console.log(data.password);
+  };
+
   return (
     <div className='rounded-t-2xl flex justify-center w-screen'>
       {challengeStarted ? (
         <div className='flex flex-col w-screen items-center'>
-          <MainInput />
-          <TasksToSolve />
+          <MainInput onSubmit={handleFormSubmit} />
         </div>
       ) : (
         <StyledButton
@@ -32,5 +36,5 @@ const MainChallenge = ({
     </div>
   );
 };
-
 export default MainChallenge;
+
