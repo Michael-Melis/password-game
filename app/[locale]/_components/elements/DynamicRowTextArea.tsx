@@ -3,7 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { useScreenWidth } from '../../_hooks/useScreenWidth';
 import { calculateNumberOfRows } from '../../_utils/helpers';
-import { Control, Controller } from 'react-hook-form';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { ReactNode } from 'react';
 
 const DynamicRowTextArea = ({
   placeholder,
@@ -15,11 +16,13 @@ const DynamicRowTextArea = ({
   formProps: {
     control: Control<
       {
-        password: string;
+        password: any;
       },
       any
     >;
-    errors: any;
+    errors: FieldErrors<{
+      password: any;
+    }>;
   };
 }) => {
   // * Localization
@@ -45,7 +48,9 @@ const DynamicRowTextArea = ({
           />
         )}
       />
-      {formProps.errors.password && <p>{formProps.errors.password.message}</p>}
+      {formProps.errors.password && (
+        <p>{formProps.errors.password.message as ReactNode}</p>
+      )}
     </>
   );
 };

@@ -8,12 +8,15 @@
     "passwordPlaceholder": "Enter your password here"
   },
   "Buttons": {
-    "startChallenge": "Start challenge"
+    "startChallenge": "Start challenge",
+    "nextChallenge": "Next challenge"
   },
   "MainChallenge": {
     "difficulty": "Difficulty: ",
     "points": "Points: ",
     "title1": "Your password must contain at least 5 characters",
-    "description1": "We are starting slowly, you can use any characters you want."
+    "description1": "We are starting slowly, you can use any characters you want.",
+    "title2": "Add special characters to your password",
+    "description2": "Rules will be simple, from now on carry on with your already created password and add any requested characters to pass the challenge. Now you can use any characters you want."
   }
 }

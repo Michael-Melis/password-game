@@ -8,7 +8,7 @@ const StyledButton = ({
   useCase = 'default',
 }: {
   title: string;
-  buttonProps: React.DetailedHTMLProps<
+  buttonProps?: React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   >;
@@ -47,7 +47,7 @@ const StyledButton = ({
 
   return (
     <button
-      className={`${styles} rounded-md ${useCaseSwitch()} ${sizeSwitch()} text-white  hover:bg-opacity-70 hover:transition ease-in-out duration-300 `}
+      className={`${styles} rounded-md ${useCaseSwitch()} ${sizeSwitch()} text-white  hover:bg-opacity-70 hover:transition ease-in-out duration-300 disabled:opacity-50 disabled:cursor-not-allowed `}
       {...buttonProps}>
       {t(title)}
     </button>
