@@ -9,5 +9,11 @@
   },
   "Buttons": {
     "startChallenge": "Start challenge"
+  },
+  "MainChallenge": {
+    "difficulty": "Difficulty: ",
+    "points": "Points: ",
+    "title1": "Your password must contain at least 5 characters",
+    "description1": "We are starting slowly, you can use any characters you want."
   }
 }

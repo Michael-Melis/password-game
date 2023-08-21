@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
-import DynamicRowTextArea from './DynamicRowTextArea';
+import DynamicRowTextArea from './elements/DynamicRowTextArea';
 
 const MainInput = () => {
   // * Localization

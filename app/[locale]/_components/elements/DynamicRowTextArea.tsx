@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useScreenWidth } from '../_hooks/useScreenWidth';
-import { calculateNumberOfRows } from '../_utils/helpers';
+import { useScreenWidth } from '../../_hooks/useScreenWidth';
+import { calculateNumberOfRows } from '../../_utils/helpers';
 
 const DynamicRowTextArea = ({
   setValue,

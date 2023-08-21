@@ -4,6 +4,7 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react';
 type TypoWithTranslationProps = {
   text: string;
   styles: string;
+  localizationContainer?: string;
   pTagProps?: DetailedHTMLProps<
     HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement
@@ -11,9 +12,9 @@ type TypoWithTranslationProps = {
 };
 
 const TypoWithTranslation = ({ data }: { data: TypoWithTranslationProps }) => {
-  const { text, styles, pTagProps } = data;
+  const { text, styles, pTagProps, localizationContainer = 'MainPage' } = data;
 
-  const t = useTranslations('MainPage');
+  const t = useTranslations(localizationContainer);
   return (
     <p className={styles} {...pTagProps}>
       {t(text)}

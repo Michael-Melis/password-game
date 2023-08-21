@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from './_components/Header';
 import MainChallenge from './_components/MainChallenge';
 
+
 export default function Index() {
   const [challengeStarted, setChallengeStarted] = useState<boolean>(false);
 
@@ -14,6 +15,7 @@ export default function Index() {
         challengeStarted={challengeStarted}
         setChallengeStarted={setChallengeStarted}
       />
+     
     </>
   );
 }

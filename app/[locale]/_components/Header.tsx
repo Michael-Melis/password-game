@@ -6,16 +6,19 @@ import { useState } from 'react';
 const Header = ({ challengeStarted }: { challengeStarted: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const dataForTitle = {
-    text: 'title',
-    styles: 'text-2xl md:text-6xl  mx-1 text-white delay-0 mt-4',
-  };
-
   return (
     <div className='flex flex-col justify-center items-center mx-2  md:mx-0 mt-32'>
-      <TypoWithTranslation data={dataForTitle} />
       <TypoWithTranslation
-        data={{ text: 'rules', styles: 'text-xl  md:text-2xl text-center text-white my-4' }}
+        data={{
+          text: 'title',
+          styles: 'text-2xl md:text-6xl  mx-1 text-white delay-0 mt-4',
+        }}
+      />
+      <TypoWithTranslation
+        data={{
+          text: 'rules',
+          styles: 'text-xl  md:text-2xl text-center text-white my-4',
+        }}
       />
 
       {!challengeStarted && (

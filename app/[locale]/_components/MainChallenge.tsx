@@ -1,8 +1,9 @@
 'use client';
 
 import { Dispatch, SetStateAction } from 'react';
-import StyledButton from './Button';
+import StyledButton from './elements/Button';
 import MainInput from './MainInput';
+import TasksToSolve from './tasks/TasksToSolve';
 
 const MainChallenge = ({
   challengeStarted,
@@ -12,9 +13,12 @@ const MainChallenge = ({
   setChallengeStarted: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <div className='rounded-t-2xl flex justify-center'>
+    <div className='rounded-t-2xl flex justify-center w-screen'>
       {challengeStarted ? (
-        <MainInput />
+        <div className='flex flex-col w-screen items-center'>
+          <MainInput />
+          <TasksToSolve />
+        </div>
       ) : (
         <StyledButton
           title='startChallenge'
